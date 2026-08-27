@@ -9,6 +9,7 @@ import { useMemo, useState, type FormEvent } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../hooks/useLanguage';
 import { getStations } from '../services/stations';
+import { getDemoScenario } from '../services/scenarios';
 import { paramsToSearchRequest, searchRequestToParams } from '../utils/searchRequestUrl';
 import { DEMO_DATES } from '../data';
 import type { TravelClass, TravelPriority } from '../types/domain';
@@ -35,6 +36,18 @@ export function SmartSearch() {
   const [preferredClass, setPreferredClass] = useState<TravelClass | ''>(priorRequest?.preferredClass ?? '');
   const [travelPriority, setTravelPriority] = useState<TravelPriority>(priorRequest?.travelPriority ?? 'BALANCED');
   const [error, setError] = useState<string | undefined>(undefined);
+
+  function applyDemo(id: string) {
+    const input = getDemoScenario(id)?.searchInput;
+    if (!input) return;
+    setSourceStationCode(input.sourceStationCode);
+    setDestinationStationCode(input.destinationStationCode);
+    setJourneyDate(input.journeyDate);
+    setPassengerCount(input.passengerCount);
+    setPreferredClass(input.preferredClass ?? '');
+    setTravelPriority(input.travelPriority ?? 'BALANCED');
+    setError(undefined);
+  }
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -76,6 +89,16 @@ export function SmartSearch() {
     <div className="max-w-xl">
       <h1 className="text-2xl font-semibold text-gray-900">{t('search.title')}</h1>
       <p className="mt-2 text-gray-500">{t('search.subtitle')}</p>
+
+      <div className="mt-4 rounded border border-blue-100 bg-blue-50 p-3">
+        <p className="text-sm font-medium text-blue-950">{t('search.examplesTitle')}</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <button type="button" onClick={() => applyDemo('demo_best_overall')} className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-xs font-medium text-blue-800 hover:bg-blue-100">{t('search.exampleBestOverall')}</button>
+          <button type="button" onClick={() => applyDemo('demo_cheapest_tradeoff')} className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-xs font-medium text-blue-800 hover:bg-blue-100">{t('search.exampleCheapest')}</button>
+          <button type="button" onClick={() => applyDemo('demo_fastest_not_cheapest')} className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-xs font-medium text-blue-800 hover:bg-blue-100">{t('search.exampleFastest')}</button>
+          <button type="button" onClick={() => applyDemo('demo_best_confirmation_chance_partial')} className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-xs font-medium text-blue-800 hover:bg-blue-100">{t('search.exampleConfirmation')}</button>
+        </div>
+      </div>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
