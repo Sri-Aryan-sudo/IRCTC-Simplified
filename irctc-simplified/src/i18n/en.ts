@@ -59,6 +59,11 @@ export const en = {
   'search.prioritySpeed': 'Fastest journey',
   'search.priorityConfirmation': 'Best chance of confirmation',
   'search.submit': 'Search trains',
+  'search.examplesTitle': 'Try a demo search',
+  'search.exampleBestOverall': 'Best Overall',
+  'search.exampleCheapest': 'Cheapest trade-off',
+  'search.exampleFastest': 'Fastest',
+  'search.exampleConfirmation': 'Best confirmation (partial)',
 
   'results.invalidSearch': 'This search link looks incomplete.',
   'results.backToSearch': 'Back to search',
