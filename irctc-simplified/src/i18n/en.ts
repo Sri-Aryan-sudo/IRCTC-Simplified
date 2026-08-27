@@ -58,6 +58,7 @@ export const en = {
   'search.priorityPrice': 'Lowest price',
   'search.prioritySpeed': 'Fastest journey',
   'search.priorityConfirmation': 'Best chance of confirmation',
+  'search.priorityOvernight': 'Overnight journey',
   'search.submit': 'Search trains',
 
   'results.invalidSearch': 'This search link looks incomplete.',
