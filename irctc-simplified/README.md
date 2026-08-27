@@ -78,7 +78,7 @@ npm run generate:data
 │   ├── services/      # Data access — pure reads over src/data
 │   ├── tools/         # Booking/search domain logic (agent-spec tools)
 │   ├── domain/        # Orchestration (Smart Search, approval)
-│   ├── agent/         # Reserved for the Agent capability (not yet implemented)
+│   ├── agent/         # Deterministic intent parsing and booking state machine
 │   ├── data/          # Deterministic mock railway data
 │   ├── types/         # Shared TypeScript domain types
 │   └── utils/         # Small pure helper functions
@@ -93,14 +93,13 @@ npm run generate:data
   without losing your place
 - Home
 - Smart Search → Results (Best Overall / Fastest / Cheapest / Best
-  Chance of Confirmation) → Train Details
-- Passenger Review → mock Booking → Booking Success
+  Chance of Confirmation / Overnight) → Train Details
+- Passenger Review → explicit approval → mock Booking → Booking Success
+- Agent-driven booking: deterministic intent extraction → recommendation → approval → mock booking
+- Status Translator for CNF, RAC, GNWL, PQWL, RLWL, TQWL, WL, CAN, and REGRET
+- Tatkal preparation → countdown → deterministic attempt → backup recovery
 - My Bookings → Booking Details
 
-**Not yet implemented:**
-- Agent-Driven Booking
-- Status Translator (standalone "Understand My Status" screen —
-  inline status badges already exist throughout the app)
-- Tatkal Mode
+All four core MVP capabilities are implemented with deterministic mock data.
 
 See `/spec` for what's planned and `CLAUDE.md` for development rules.
