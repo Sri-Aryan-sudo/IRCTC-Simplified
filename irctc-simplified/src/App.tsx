@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ErrorBoundary } from './components/ErrorBoundary'
-import { DevPlaceholder } from './components/DevPlaceholder'
 import { AuthProvider } from './hooks/useAuth'
 import { LanguageProvider } from './hooks/useLanguage'
 import { ProtectedRoute } from './layouts/ProtectedRoute'
@@ -16,10 +15,12 @@ import { MyBookings } from './pages/MyBookings'
 import { BookingDetails } from './pages/BookingDetails'
 import { Agent } from './pages/Agent'
 import { Status } from './pages/Status'
+import { Tatkal } from './pages/Tatkal'
+import { TatkalPrepare } from './pages/TatkalPrepare'
+import { TatkalCountdown } from './pages/TatkalCountdown'
+import { TatkalAttempt } from './pages/TatkalAttempt'
 
-// Routes per spec/05-technical-spec.md §4. Only Login and Home have
-// real implementations in this foundation task — every other screen
-// is an explicit placeholder per this task's Strict Boundaries.
+// Routes per spec/05-technical-spec.md §4.
 function App() {
   return (
     <ErrorBoundary>
@@ -39,10 +40,10 @@ function App() {
                   <Route path="/booking/success/:bookingId" element={<BookingSuccess />} />
                   <Route path="/agent" element={<Agent />} />
                   <Route path="/status" element={<Status />} />
-                  <Route path="/tatkal" element={<DevPlaceholder title="Tatkal Mode" />} />
-                  <Route path="/tatkal/prepare" element={<DevPlaceholder title="Preparation" />} />
-                  <Route path="/tatkal/countdown" element={<DevPlaceholder title="Countdown" />} />
-                  <Route path="/tatkal/attempt" element={<DevPlaceholder title="Booking Attempt" />} />
+                  <Route path="/tatkal" element={<Tatkal />} />
+                  <Route path="/tatkal/prepare" element={<TatkalPrepare />} />
+                  <Route path="/tatkal/countdown" element={<TatkalCountdown />} />
+                  <Route path="/tatkal/attempt" element={<TatkalAttempt />} />
                   <Route path="/bookings" element={<MyBookings />} />
                   <Route path="/bookings/:bookingId" element={<BookingDetails />} />
                 </Route>
