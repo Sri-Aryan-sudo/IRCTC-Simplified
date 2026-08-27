@@ -16,11 +16,11 @@
  */
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useLanguage } from '../hooks/useLanguage';
 import * as engine from '../agent/engine';
-import { classifyRequestKind, parseStatusQuery } from '../agent/intentParser';
+import { classifyRequestKind, parseIntent, parseStatusQuery } from '../agent/intentParser';
 import { explainStatus, type ExplainStatusResult } from '../tools/explainStatus';
 import { getAvailability } from '../tools/getAvailability';
 import { getTrain } from '../services/trains';
@@ -68,6 +68,7 @@ function OptionCard({ option }: { option: RecommendationOption }) {
 export function Agent() {
   const { t, language } = useLanguage();
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
   const [session, setSession] = useState<AgentSession | undefined>(undefined);
   const [statusResult, setStatusResult] = useState<ExplainStatusResult | undefined>(undefined);
@@ -96,10 +97,22 @@ export function Agent() {
       }
     }
 
-    // Tatkal-intent requests are handed off to Tatkal Mode's own
-    // preparation flow (spec/03-agent-spec.md §9/§12) once that
-    // track exists; until then this falls through to the normal
-    // booking-intent pipeline, which still produces a useful result.
+    // Tatkal-intent requests hand off to Tatkal Mode's own
+    // Preparation screen (spec/03-agent-spec.md §9/§12) with whatever
+    // journey details were extracted already filled in — preferred/
+    // backup train selection still needs the user's explicit choice
+    // there, so the agent doesn't fabricate a TatkalPreparation itself.
+    if (kind === 'TATKAL') {
+      const tatkalIntent = parseIntent(text, language);
+      const params = new URLSearchParams();
+      if (tatkalIntent.sourceStationCode) params.set('from', tatkalIntent.sourceStationCode);
+      if (tatkalIntent.destinationStationCode) params.set('to', tatkalIntent.destinationStationCode);
+      if (tatkalIntent.resolvedDate) params.set('date', tatkalIntent.resolvedDate);
+      if (tatkalIntent.preferredClass) params.set('class', tatkalIntent.preferredClass);
+      navigate(`/tatkal/prepare?${params.toString()}`);
+      return;
+    }
+
     const base = session ?? engine.createSession(currentUser!.id);
     const next = engine.submitMessage(base, text, language);
     setSession(next);

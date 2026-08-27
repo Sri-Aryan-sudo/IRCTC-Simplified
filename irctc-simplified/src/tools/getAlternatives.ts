@@ -3,9 +3,15 @@
  *
  * Finds alternative options when the preferred/recommended option is
  * unavailable or declined. Read-only: re-runs searchTrains + rankOptions
- * over the same hard constraints (route, date) as the original intent
- * or Tatkal preparation, then excludes the failed/declined train.
- * Never invents an alternative that doesn't satisfy those constraints.
+ * over the same hard constraints (route, date — spec's own phrase for
+ * what an alternative must still satisfy) as the original intent or
+ * Tatkal preparation, then excludes the failed/declined train. Class
+ * is deliberately NOT re-applied as a filter here: it's a stated
+ * preference for the primary recommendation, not a hard constraint,
+ * and alternatives exist specifically to surface honest trade-offs
+ * (e.g. a pricier confirmed seat in a different class) — narrowing
+ * to the same class would hide exactly that. Never invents an
+ * alternative that doesn't satisfy the real hard constraints.
  */
 
 import { searchTrains } from './searchTrains';
@@ -28,14 +34,12 @@ export function getAlternatives(
         destinationStationCode: source.destinationStationCode,
         journeyDate: source.journeyDate,
         passengerCount: source.passengerIds.length || 1,
-        preferredClass: source.preferredClass,
       }
     : {
         sourceStationCode: source.sourceStationCode ?? '',
         destinationStationCode: source.destinationStationCode ?? '',
         journeyDate: source.resolvedDate ?? '',
         passengerCount: source.passengerCount ?? 1,
-        preferredClass: source.preferredClass,
       };
 
   if (!request.sourceStationCode || !request.destinationStationCode || !request.journeyDate) {

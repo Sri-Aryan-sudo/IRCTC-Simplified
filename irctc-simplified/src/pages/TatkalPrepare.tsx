@@ -8,7 +8,7 @@
  */
 
 import { useMemo, useState, type FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useLanguage } from '../hooks/useLanguage';
 import { getStations } from '../services/stations';
@@ -30,10 +30,23 @@ export function TatkalPrepare() {
   const existing = currentUser ? getTatkalPreparation(currentUser.id) : undefined;
   const savedPassengers = currentUser ? getPassengers(currentUser.id) : [];
 
-  const [sourceStationCode, setSourceStationCode] = useState(existing?.sourceStationCode ?? '');
-  const [destinationStationCode, setDestinationStationCode] = useState(existing?.destinationStationCode ?? '');
-  const [journeyDate, setJourneyDate] = useState(existing?.journeyDate ?? DEMO_DATES.TOMORROW);
-  const [preferredClass, setPreferredClass] = useState<TravelClass>(existing?.preferredClass ?? '3A');
+  // A Tatkal-intent request handled by the Agent (spec/03-agent-spec.md
+  // §12) hands off here with the extracted intent in the URL, rather
+  // than silently falling through to normal booking or guessing which
+  // trains to prepare — preferred/backup train selection still needs
+  // the user's explicit choice (spec/02-ux-spec.md's Preparation screen).
+  const [searchParams] = useSearchParams();
+  const prefillFrom = searchParams.get('from');
+  const prefillTo = searchParams.get('to');
+  const prefillDate = searchParams.get('date');
+  const prefillClass = searchParams.get('class') as TravelClass | null;
+
+  const [sourceStationCode, setSourceStationCode] = useState(existing?.sourceStationCode ?? prefillFrom ?? '');
+  const [destinationStationCode, setDestinationStationCode] = useState(
+    existing?.destinationStationCode ?? prefillTo ?? '',
+  );
+  const [journeyDate, setJourneyDate] = useState(existing?.journeyDate ?? prefillDate ?? DEMO_DATES.TOMORROW);
+  const [preferredClass, setPreferredClass] = useState<TravelClass>(existing?.preferredClass ?? prefillClass ?? '3A');
   const [preferredTrainNumber, setPreferredTrainNumber] = useState(existing?.preferredTrainNumber ?? '');
   const [backupTrainNumbers, setBackupTrainNumbers] = useState<string[]>(existing?.backupTrainNumbers ?? []);
   const [passengerIds, setPassengerIds] = useState<string[]>(
@@ -101,6 +114,12 @@ export function TatkalPrepare() {
     <div className="max-w-xl">
       <h1 className="text-2xl font-semibold text-gray-900">{t('tatkalPrepare.title')}</h1>
       <p className="mt-2 text-gray-500">{t('tatkalPrepare.subtitle')}</p>
+
+      {(prefillFrom || prefillTo) && !existing && (
+        <p className="mt-3 rounded border border-blue-200 bg-blue-50 p-3 text-sm text-blue-900">
+          {t('tatkalPrepare.prefilledNotice')}
+        </p>
+      )}
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4" noValidate>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

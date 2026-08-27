@@ -178,6 +178,7 @@ export const en = {
   'tatkal.resumePreparationAction': 'Resume preparation',
 
   'tatkalPrepare.title': 'Prepare for Tatkal',
+  'tatkalPrepare.prefilledNotice': "We've pre-filled this from what you told the agent — please choose your preferred and backup trains below.",
   'tatkalPrepare.subtitle': "Do everything now, so nothing is decided under time pressure once Tatkal opens.",
   'tatkalPrepare.passengersLabel': 'Passengers',
   'tatkalPrepare.preferredTrainLabel': 'Preferred train',
