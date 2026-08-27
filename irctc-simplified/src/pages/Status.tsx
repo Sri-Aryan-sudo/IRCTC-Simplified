@@ -50,6 +50,13 @@ export function Status() {
     setResult(explainStatus(selectedCode, positionNum));
   }
 
+  function applyDemo(code: StatusCode, positionNum: number) {
+    setSelectedCode(code);
+    setPosition(String(positionNum));
+    setResult(explainStatus(code, positionNum));
+    setSubmitted(true);
+  }
+
   function explanationFor(code: StatusCode, positionNum?: number): string {
     return t(`status.${code}.explanation` as TranslationKey, { position: positionNum ?? '' });
   }
@@ -65,6 +72,14 @@ export function Status() {
     <div className="max-w-lg">
       <h1 className="text-2xl font-semibold text-gray-900">{t('statusTranslator.title')}</h1>
       <p className="mt-2 text-gray-500">{t('statusTranslator.subtitle')}</p>
+
+      <div className="mt-4 rounded border border-blue-100 bg-blue-50 p-3">
+        <p className="text-sm font-medium text-blue-950">{t('statusTranslator.examplesTitle')}</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          <button type="button" onClick={() => applyDemo('GNWL', 24)} className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-xs font-medium text-blue-800 hover:bg-blue-100">{t('statusTranslator.exampleGnwl')}</button>
+          <button type="button" onClick={() => applyDemo('RAC', 14)} className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-xs font-medium text-blue-800 hover:bg-blue-100">{t('statusTranslator.exampleRac')}</button>
+        </div>
+      </div>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4 rounded border border-gray-200 bg-white p-4">
         <div>
