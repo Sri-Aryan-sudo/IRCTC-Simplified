@@ -1,0 +1,132 @@
+/**
+ * English is the canonical key set — every other language dictionary
+ * is typed as a Partial of this, and any key missing from another
+ * language falls back to this file. See spec/05-technical-spec.md §7.
+ *
+ * This is a small, representative set for the shared foundation only
+ * (app shell, login, home) — NOT a translation of every future
+ * screen. Later feature work adds its own keys here as it's built.
+ */
+
+export const en = {
+  'common.appName': 'IRCTC Simplified',
+  'common.loading': 'Loading…',
+  'common.errorGeneric': 'Something went wrong. Please try again.',
+  'common.logout': 'Log out',
+  'common.comingSoon': "This screen isn't built yet.",
+  'common.language': 'Language',
+
+  'nav.home': 'Home',
+  'nav.smartSearch': 'Smart Search',
+  'nav.agent': 'Ask the Agent',
+  'nav.status': 'Understand My Status',
+  'nav.tatkal': 'Tatkal Mode',
+  'nav.myBookings': 'My Bookings',
+
+  'login.title': 'Welcome to IRCTC Simplified',
+  'login.subtitle': 'This is a mock login for the prototype — pick a demo user to continue.',
+  'login.selectUser': 'Choose a demo user',
+  'login.passwordLabel': 'Password (not checked)',
+  'login.passwordPlaceholder': 'Any value works',
+  'login.submit': 'Continue',
+  'login.mockNotice':
+    'No real account is created or checked. This is a simulated login for the hackathon prototype.',
+
+  'home.title': 'Where would you like to go?',
+  'home.subtitle': "Don't worry about how Indian Railways works — just tell us what you need.",
+  'home.entrySmartSearch': 'Search trains',
+  'home.entryAgent': 'Ask the agent',
+  'home.entryStatus': 'Understand a status',
+  'home.entryTatkal': 'Tatkal Mode',
+  'home.entryMyBookings': 'My Bookings',
+
+  'search.errorMissingFrom': "Please choose where you're travelling from.",
+  'search.errorMissingTo': "Please choose where you're travelling to.",
+  'search.errorSameStation': "Origin and destination can't be the same station.",
+  'search.errorMissingDate': 'Please choose a journey date.',
+  'search.errorInvalidPassengers': 'Please enter at least 1 passenger.',
+  'search.title': 'Where would you like to travel?',
+  'search.subtitle': "Tell us your journey and we'll find the best options.",
+  'search.fromLabel': 'From',
+  'search.toLabel': 'To',
+  'search.dateLabel': 'Journey date',
+  'search.passengersLabel': 'Passengers',
+  'search.classLabel': 'Class',
+  'search.classAny': 'Any class',
+  'search.priorityLabel': 'What matters most to you?',
+  'search.priorityBalanced': 'A good balance',
+  'search.priorityPrice': 'Lowest price',
+  'search.prioritySpeed': 'Fastest journey',
+  'search.priorityConfirmation': 'Best chance of confirmation',
+  'search.submit': 'Search trains',
+
+  'results.invalidSearch': 'This search link looks incomplete.',
+  'results.backToSearch': 'Back to search',
+  'results.loading': 'Finding the best trains…',
+  'results.title': 'Your options',
+  'results.emptyTitle': "We couldn't find a matching train.",
+  'results.emptyBody': 'Try a different date or route.',
+  'results.partialNotice':
+    "No confirmed option is available yet for this search — here's the best chance of confirmation, and other honest options.",
+  'results.hideMoreOptions': 'Hide more options',
+  'results.showMoreOptions': 'Show more options',
+  'results.categoryBestOverall': 'Best Overall',
+  'results.categoryFastest': 'Fastest',
+  'results.categoryCheapest': 'Cheapest',
+  'results.categoryBestConfirmation': 'Best Chance of Confirmation',
+  'results.alsoLabel': 'also',
+  'results.reasonBestOverall': 'Recommended because it balances price, travel time and confirmation.',
+  'results.reasonFastest': 'The fastest option on this route.',
+  'results.reasonCheapest': 'The cheapest option on this route.',
+  'results.reasonBestConfirmation': 'Your best chance of a confirmed seat on this route.',
+  'results.tradeoffWaitlistNotice': "Save {savings} compared with a confirmed option, but you'd be on the waitlist.",
+  'results.selectAction': 'View details',
+
+  'trainDetails.notFound': "We couldn't find that train option.",
+  'trainDetails.backToResults': 'Back to results',
+  'trainDetails.departureLabel': 'Departure',
+  'trainDetails.arrivalLabel': 'Arrival',
+  'trainDetails.durationLabel': 'Duration',
+  'trainDetails.classLabel': 'Class',
+  'trainDetails.fareLabel': 'Fare',
+  'trainDetails.statusLabel': 'Status',
+  'trainDetails.proceedAction': 'Continue with this train',
+
+  'status.confirmed': 'Confirmed',
+  'status.racPosition': 'RAC #{position} — you can board',
+  'status.waitlistPosition': '#{position} on the waitlist — not confirmed yet',
+  'status.soldOut': 'Sold out',
+
+  'passengerReview.title': 'Passenger details',
+  'passengerReview.selectPassengersLabel': 'Passengers',
+  'passengerReview.passengerRequiredCount': 'Select {count} passenger(s) for this journey.',
+  'passengerReview.notEnoughSavedPassengers': "You don't have enough saved passengers for this many travellers.",
+  'passengerReview.reviewAction': 'Review booking',
+  'passengerReview.confirmSummaryTitle': 'Review your booking',
+  'passengerReview.confirmSummaryBody': "You're booking {train} for {count} passenger(s) for {fare}. Confirm booking?",
+  'passengerReview.confirmAction': 'Confirm Booking',
+  'passengerReview.goBackAction': 'Go Back',
+  'passengerReview.submitting': 'Confirming your booking…',
+  'passengerReview.bookingFailed': "We couldn't complete this booking. Please go back and try again.",
+
+  'bookingSuccess.title': 'Booking confirmed',
+  'bookingSuccess.notFound': "We couldn't find that booking.",
+  'bookingSuccess.pnrLabel': 'PNR',
+  'bookingSuccess.mockNotice':
+    'This is a simulated booking for the prototype — no real ticket was purchased.',
+  'bookingSuccess.goToMyBookings': 'Go to My Bookings',
+  'bookingSuccess.goHome': 'Back to Home',
+
+  'myBookings.title': 'My Bookings',
+  'myBookings.loading': 'Loading your bookings…',
+  'myBookings.emptyTitle': "You don't have any bookings yet.",
+  'myBookings.emptyBody': 'Search for a train or ask the agent to make your first booking.',
+  'myBookings.passengerCountLabel': '{count} passenger(s)',
+
+  'bookingDetails.backToBookings': 'Back to My Bookings',
+  'bookingDetails.notFound': "We couldn't find that booking.",
+  'bookingDetails.pnrLabel': 'PNR',
+  'bookingDetails.passengersLabel': 'Passengers',
+} as const;
+
+export type TranslationKey = keyof typeof en;
