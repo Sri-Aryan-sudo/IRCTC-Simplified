@@ -14,6 +14,7 @@ import { PassengerReview } from './pages/PassengerReview'
 import { BookingSuccess } from './pages/BookingSuccess'
 import { MyBookings } from './pages/MyBookings'
 import { BookingDetails } from './pages/BookingDetails'
+import { Agent } from './pages/Agent'
 
 // Routes per spec/05-technical-spec.md §4. Only Login and Home have
 // real implementations in this foundation task — every other screen
@@ -35,7 +36,7 @@ function App() {
                   <Route path="/train/:trainNumber" element={<TrainDetails />} />
                   <Route path="/checkout/passengers" element={<PassengerReview />} />
                   <Route path="/booking/success/:bookingId" element={<BookingSuccess />} />
-                  <Route path="/agent" element={<DevPlaceholder title="Agent" />} />
+                  <Route path="/agent" element={<Agent />} />
                   <Route path="/status" element={<DevPlaceholder title="Understand My Status" />} />
                   <Route path="/tatkal" element={<DevPlaceholder title="Tatkal Mode" />} />
                   <Route path="/tatkal/prepare" element={<DevPlaceholder title="Preparation" />} />
