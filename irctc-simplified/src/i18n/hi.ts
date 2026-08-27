@@ -127,6 +127,15 @@ export const hi: Partial<Record<TranslationKey, string>> = {
   'agent.mockNotice': 'यह प्रोटोटाइप के लिए एक सिम्युलेटेड बुकिंग है — कोई असली टिकट नहीं खरीदा गया।',
   'agent.viewBookingAction': 'बुकिंग देखें',
 
+  'statusTranslator.title': 'मेरा स्टेटस समझें',
+  'statusTranslator.subtitle': 'इसका मतलब सरल भाषा में जानने के लिए एक स्टेटस कोड चुनें।',
+  'statusTranslator.codeLabel': 'स्टेटस कोड',
+  'statusTranslator.positionLabel': 'पोज़िशन (अगर टिकट पर दिखाई दे)',
+  'statusTranslator.positionPlaceholder': 'जैसे 24',
+  'statusTranslator.submit': 'यह स्टेटस समझाएं',
+  'statusTranslator.unrecognized': 'हम उस स्टेटस कोड को पहचान नहीं पा रहे। कृपया सूची से एक चुनें।',
+  'statusTranslator.considerationLabel': 'आप क्या सोच सकते हैं',
+
   'passengerReview.title': 'यात्री विवरण',
   'passengerReview.selectPassengersLabel': 'यात्री',
   'passengerReview.passengerRequiredCount': 'इस यात्रा के लिए {count} यात्री चुनें।',

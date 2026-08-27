@@ -129,6 +129,44 @@ export const en = {
   'agent.mockNotice': 'This is a simulated booking for the prototype — no real ticket was purchased.',
   'agent.viewBookingAction': 'View booking',
 
+  'statusTranslator.title': 'Understand my status',
+  'statusTranslator.subtitle': 'Select a status code to see what it means in plain language.',
+  'statusTranslator.codeLabel': 'Status code',
+  'statusTranslator.positionLabel': 'Position (if shown on your ticket)',
+  'statusTranslator.positionPlaceholder': 'e.g. 24',
+  'statusTranslator.submit': 'Explain this status',
+  'statusTranslator.unrecognized': "We don't recognize that status code. Please choose one from the list.",
+  'statusTranslator.considerationLabel': 'What you might consider doing',
+
+  'status.CNF.explanation': 'Your seat or berth is confirmed. You have a guaranteed place on this train.',
+  'status.RAC.explanation': "You're #{position} on RAC. You can board and travel, sharing a berth with one other RAC passenger.",
+  'status.RAC.suggestion':
+    'You can travel as-is. If other passengers cancel, you may later be upgraded to your own confirmed berth.',
+  'status.GNWL.explanation': "You're currently #{position} on the General Wait List. Your ticket is not confirmed yet.",
+  'status.GNWL.suggestion':
+    'Consider a backup train or a different class with better availability, especially if your travel date is fixed.',
+  'status.PQWL.explanation':
+    "You're #{position} on a Pooled Quota Wait List — a shared waitlist for a shorter part of this train's overall journey.",
+  'status.PQWL.suggestion':
+    'Pooled quota tends to move slower than the general waitlist. A different train or class may confirm sooner.',
+  'status.RLWL.explanation':
+    "You're #{position} on a Remote Location Wait List, tied to a specific stop along this train's route rather than its starting station.",
+  'status.RLWL.suggestion':
+    'This waitlist is often slower to confirm than a General Waitlist. Check other trains if your plans are firm.',
+  'status.TQWL.explanation':
+    "You're #{position} on the Tatkal Wait List. Tatkal quota is small, so this is less likely to confirm than a regular waitlist.",
+  'status.TQWL.suggestion': 'Have a backup train ready — Tatkal waitlists confirm less often than general ones.',
+  'status.WL.explanation':
+    '"WL" is a general term for any waitlisted status. The specific type (GNWL, PQWL, RLWL, or TQWL) determines how likely it is to confirm.',
+  'status.WL.suggestion': 'Look up the specific waitlist type shown on your ticket for a clearer picture.',
+  'status.SOLD_OUT.explanation': 'No seats and no further waitlist spots are available for this train, date, and class.',
+  'status.SOLD_OUT.suggestion': 'Try a different train, class, or nearby date.',
+  'status.CAN.explanation': 'This booking was cancelled and is no longer valid for travel.',
+  'status.CAN.suggestion': 'If you still need to travel, search for a new option.',
+  'status.REGRET.explanation':
+    'This booking attempt could not be completed — no seats, waitlist spots, or RAC were available.',
+  'status.REGRET.suggestion': 'Check the backup options already prepared, or start a new search.',
+
   'passengerReview.title': 'Passenger details',
   'passengerReview.selectPassengersLabel': 'Passengers',
   'passengerReview.passengerRequiredCount': 'Select {count} passenger(s) for this journey.',

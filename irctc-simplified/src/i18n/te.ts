@@ -127,6 +127,15 @@ export const te: Partial<Record<TranslationKey, string>> = {
   'agent.mockNotice': 'ఇది ప్రోటోటైప్ కోసం అనుకరణ బుకింగ్ — నిజమైన టికెట్ కొనుగోలు చేయబడలేదు.',
   'agent.viewBookingAction': 'బుకింగ్ చూడండి',
 
+  'statusTranslator.title': 'నా స్టేటస్ అర్థం చేసుకోండి',
+  'statusTranslator.subtitle': 'స్టేటస్ ఎంటో సులభమైన భాషలో చూడడానికి ఒక స్టేటస్ కోడ్‌ను ఎంచుకోండి.',
+  'statusTranslator.codeLabel': 'స్టేటస్ కోడ్',
+  'statusTranslator.positionLabel': 'పోజిషన్ (టికెట్‌పై ఉంటే)',
+  'statusTranslator.positionPlaceholder': 'ఉదా. 24',
+  'statusTranslator.submit': 'ఈ స్టేటస్‌ను వివరించండి',
+  'statusTranslator.unrecognized': 'మాకు ఆ స్టేటస్ కోడ్ గుర్తించలేదు. దయచేసి జాబితా నుండి ఒకదాన్ని ఎంచుకోండి.',
+  'statusTranslator.considerationLabel': 'మీరు ఏమి చేయాలని ఆలోచించవచ్చు',
+
   'passengerReview.title': 'ప్రయాణికుల వివరాలు',
   'passengerReview.selectPassengersLabel': 'ప్రయాణికులు',
   'passengerReview.passengerRequiredCount': 'ఈ ప్రయాణం కోసం {count} ప్రయాణికులను ఎంచుకోండి.',
