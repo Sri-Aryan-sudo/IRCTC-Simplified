@@ -43,6 +43,14 @@ const CATEGORY_KEY: Record<RecommendationOption['category'], TranslationKey> = {
   BEST_CONFIRMATION_CHANCE: 'results.categoryBestConfirmation',
 };
 
+const EXAMPLE_KEYS: TranslationKey[] = [
+  'agent.exampleBook',
+  'agent.exampleCheapest',
+  'agent.exampleFastest',
+  'agent.exampleConfirmation',
+  'agent.exampleTatkal',
+];
+
 function OptionCard({ option }: { option: RecommendationOption }) {
   const { t } = useLanguage();
   const train = getTrain(option.trainNumber);
@@ -161,6 +169,18 @@ export function Agent() {
     <div className="max-w-lg">
       <h1 className="text-2xl font-semibold text-gray-900">{t('agent.title')}</h1>
       <p className="mt-2 text-gray-500">{t('agent.subtitle')}</p>
+
+      <div className="mt-4 rounded border border-blue-100 bg-blue-50 p-3">
+        <p className="text-sm font-medium text-blue-950">{t('agent.examplesTitle')}</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {EXAMPLE_KEYS.map((key) => (
+            <button key={key} type="button" onClick={() => setInputText(t(key))}
+              className="rounded-full border border-blue-200 bg-white px-3 py-1.5 text-left text-xs font-medium text-blue-800 hover:bg-blue-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500">
+              {t(key)}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {statusResult && (
         <div className="mt-4 rounded border border-blue-200 bg-blue-50 p-4">
