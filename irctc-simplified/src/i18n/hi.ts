@@ -57,6 +57,11 @@ export const hi: Partial<Record<TranslationKey, string>> = {
   'search.prioritySpeed': 'सबसे तेज़ यात्रा',
   'search.priorityConfirmation': 'कन्फर्मेशन की सबसे अच्छी संभावना',
   'search.submit': 'ट्रेनें खोजें',
+  'search.examplesTitle': 'डेमो सर्च आज़माएं',
+  'search.exampleBestOverall': 'सर्वश्रेष्ठ विकल्प',
+  'search.exampleCheapest': 'सबसे सस्ता विकल्प',
+  'search.exampleFastest': 'सबसे तेज़',
+  'search.exampleConfirmation': 'सर्वोत्तम कन्फर्मेशन (आंशिक)',
 
   'results.invalidSearch': 'यह सर्च लिंक अधूरा लग रहा है।',
   'results.backToSearch': 'सर्च पर वापस जाएं',
