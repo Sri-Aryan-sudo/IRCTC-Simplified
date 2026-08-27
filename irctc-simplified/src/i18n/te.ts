@@ -57,6 +57,11 @@ export const te: Partial<Record<TranslationKey, string>> = {
   'search.prioritySpeed': 'వేగవంతమైన ప్రయాణం',
   'search.priorityConfirmation': 'కన్ఫర్మేషన్ యొక్క ఉత్తమ అవకాశం',
   'search.submit': 'రైళ్లను వెతకండి',
+  'search.examplesTitle': 'డెమో సెర్చ్ ప్రయత్నించండి',
+  'search.exampleBestOverall': 'ఉత్తమ ఎంపిక',
+  'search.exampleCheapest': 'అతి చౌకైన ఎంపిక',
+  'search.exampleFastest': 'అత్యంత వేగవంతమైనది',
+  'search.exampleConfirmation': 'ఉత్తమ కన్ఫర్మేషన్ (పాక్షికం)',
 
   'results.invalidSearch': 'ఈ సెర్చ్ లింక్ అసంపూర్ణంగా కనిపిస్తోంది.',
   'results.backToSearch': 'సెర్చ్‌కి తిరిగి వెళ్ళండి',
