@@ -8,7 +8,7 @@
 import type { RecommendationCategory, SearchRequest, TravelClass, TravelPriority } from '../types/domain';
 
 const VALID_CLASSES: TravelClass[] = ['SL', '3A', '2A', '1A', 'CC'];
-const VALID_PRIORITIES: TravelPriority[] = ['PRICE', 'SPEED', 'CONFIRMATION', 'BALANCED'];
+const VALID_PRIORITIES: TravelPriority[] = ['PRICE', 'SPEED', 'CONFIRMATION', 'OVERNIGHT', 'BALANCED'];
 
 export function searchRequestToParams(request: SearchRequest): URLSearchParams {
   const params = new URLSearchParams();

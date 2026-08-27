@@ -39,14 +39,16 @@ interface Weights {
   confirmation: number;
   price: number;
   speed: number;
+  overnight: number;
 }
 
-const DEFAULT_WEIGHTS: Weights = { confirmation: 0.4, price: 0.3, speed: 0.3 };
+const DEFAULT_WEIGHTS: Weights = { confirmation: 0.4, price: 0.3, speed: 0.3, overnight: 0 };
 
 const PRIORITY_WEIGHTS: Record<Exclude<TravelPriority, 'BALANCED'>, Weights> = {
-  CONFIRMATION: { confirmation: 0.6, price: 0.2, speed: 0.2 },
-  PRICE: { confirmation: 0.2, price: 0.6, speed: 0.2 },
-  SPEED: { confirmation: 0.2, price: 0.2, speed: 0.6 },
+  CONFIRMATION: { confirmation: 0.6, price: 0.2, speed: 0.2, overnight: 0 },
+  PRICE: { confirmation: 0.2, price: 0.6, speed: 0.2, overnight: 0 },
+  SPEED: { confirmation: 0.2, price: 0.2, speed: 0.6, overnight: 0 },
+  OVERNIGHT: { confirmation: 0.25, price: 0.15, speed: 0.1, overnight: 0.5 },
 };
 
 function weightsFor(priority: TravelPriority | undefined): Weights {
@@ -94,10 +96,17 @@ export function rankOptions(
     maxFare === minFare ? 1 : 1 - (c.fareAmount - minFare) / (maxFare - minFare);
   const speedScore = (c: TrainAvailability): number =>
     maxDuration === minDuration ? 1 : 1 - (durationOf(c) - minDuration) / (maxDuration - minDuration);
+  const overnightScore = (c: TrainAvailability): number => {
+    const departureHour = Number(trainsByNumber.get(c.trainNumber)?.departureTime.slice(0, 2));
+    return departureHour >= 18 || departureHour < 5 ? 1 : 0;
+  };
 
   const weights = weightsFor(preferences.travelPriority);
   const overallScore = (c: TrainAvailability): number =>
-    weights.confirmation * c.confirmationLikelihood + weights.price * priceScore(c) + weights.speed * speedScore(c);
+    weights.confirmation * c.confirmationLikelihood +
+    weights.price * priceScore(c) +
+    weights.speed * speedScore(c) +
+    weights.overnight * overnightScore(c);
 
   // Deterministic tie-break: higher score first, then cheaper, then
   // shorter duration, then train number — never a random shuffle.

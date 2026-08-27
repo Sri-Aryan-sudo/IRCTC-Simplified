@@ -50,7 +50,7 @@ export type BerthPreference =
   | 'SIDE_UPPER'
   | 'NO_PREFERENCE';
 
-export type TravelPriority = 'PRICE' | 'SPEED' | 'CONFIRMATION' | 'BALANCED';
+export type TravelPriority = 'PRICE' | 'SPEED' | 'CONFIRMATION' | 'OVERNIGHT' | 'BALANCED';
 
 export interface UserPreferences {
   preferredClass?: TravelClass;

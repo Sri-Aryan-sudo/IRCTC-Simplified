@@ -56,6 +56,7 @@ export const hi: Partial<Record<TranslationKey, string>> = {
   'search.priorityPrice': 'सबसे कम कीमत',
   'search.prioritySpeed': 'सबसे तेज़ यात्रा',
   'search.priorityConfirmation': 'कन्फर्मेशन की सबसे अच्छी संभावना',
+  'search.priorityOvernight': 'रात भर की यात्रा',
   'search.submit': 'ट्रेनें खोजें',
 
   'results.invalidSearch': 'यह सर्च लिंक अधूरा लग रहा है।',

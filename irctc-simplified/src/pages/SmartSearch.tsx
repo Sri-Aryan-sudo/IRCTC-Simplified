@@ -14,7 +14,7 @@ import { DEMO_DATES } from '../data';
 import type { TravelClass, TravelPriority } from '../types/domain';
 
 const CLASS_OPTIONS: TravelClass[] = ['SL', '3A', '2A', '1A', 'CC'];
-const PRIORITY_OPTIONS: TravelPriority[] = ['BALANCED', 'PRICE', 'SPEED', 'CONFIRMATION'];
+const PRIORITY_OPTIONS: TravelPriority[] = ['BALANCED', 'PRICE', 'SPEED', 'CONFIRMATION', 'OVERNIGHT'];
 
 export function SmartSearch() {
   const { t } = useLanguage();
@@ -188,7 +188,9 @@ export function SmartSearch() {
                         ? 'search.priorityPrice'
                         : p === 'SPEED'
                           ? 'search.prioritySpeed'
-                          : 'search.priorityConfirmation',
+                          : p === 'CONFIRMATION'
+                            ? 'search.priorityConfirmation'
+                            : 'search.priorityOvernight',
                   )}
                 </option>
               ))}
